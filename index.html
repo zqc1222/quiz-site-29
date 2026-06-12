@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>第二十九期题库刷题台</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="刷题导航">
+        <div class="brand">
+          <img class="brand-mark" src="assets/study-plate.svg" alt="" />
+          <div>
+            <p class="overline">第二十九期题库</p>
+            <h1>刷题台</h1>
+          </div>
+        </div>
+
+        <section class="metric-block" aria-label="学习进度">
+          <div class="dial" id="accuracyDial">
+            <span id="accuracyValue">0%</span>
+          </div>
+          <div class="metric-copy">
+            <strong id="doneCount">0 / 0</strong>
+            <span>已练题目</span>
+          </div>
+        </section>
+
+        <nav class="mode-nav" id="modeNav">
+          <button class="nav-item is-active" data-mode="practice" type="button">
+            <span class="nav-icon">□</span><span>顺序练习</span>
+          </button>
+          <button class="nav-item" data-mode="random" type="button">
+            <span class="nav-icon">↝</span><span>随机刷题</span>
+          </button>
+          <button class="nav-item" data-mode="exam" type="button">
+            <span class="nav-icon">◷</span><span>模拟考试</span>
+          </button>
+          <button class="nav-item" data-mode="wrong" type="button">
+            <span class="nav-icon">×</span><span>错题本</span>
+          </button>
+          <button class="nav-item" data-mode="favorite" type="button">
+            <span class="nav-icon">☆</span><span>收藏夹</span>
+          </button>
+          <button class="nav-item" data-mode="knowledge" type="button">
+            <span class="nav-icon">⌁</span><span>知识点</span>
+          </button>
+        </nav>
+
+        <div class="rail-actions">
+          <button class="ghost-button" id="exportBtn" type="button">导出记录</button>
+          <label class="ghost-button file-button" for="importInput">导入记录</label>
+          <input id="importInput" type="file" accept="application/json" hidden />
+          <button class="danger-button" id="resetBtn" type="button">清空进度</button>
+        </div>
+      </aside>
+
+      <main class="main-stage">
+        <header class="topbar">
+          <div>
+            <p class="overline" id="bankMeta">题库载入中</p>
+            <h2 id="viewTitle">顺序练习</h2>
+          </div>
+          <div class="toolbar">
+            <label class="search-box">
+              <span>⌕</span>
+              <input id="searchInput" type="search" placeholder="搜索题干、答案或选项" />
+            </label>
+            <select id="typeFilter" aria-label="题型筛选">
+              <option value="all">全部题型</option>
+              <option value="fill">填空</option>
+              <option value="single">单选</option>
+              <option value="multiple">多选</option>
+              <option value="judge">判断</option>
+              <option value="short">简答</option>
+            </select>
+            <button class="solid-button" id="shuffleBtn" type="button">换一组</button>
+          </div>
+        </header>
+
+        <section class="overview-grid" id="overviewGrid" aria-label="题库概览"></section>
+
+        <section class="question-panel" id="questionPanel" aria-live="polite"></section>
+      </main>
+
+      <aside class="sheet-panel" aria-label="答题卡">
+        <div class="sheet-head">
+          <div>
+            <p class="overline">答题卡</p>
+            <h2 id="sheetTitle">全部题目</h2>
+          </div>
+          <button class="icon-button" id="compactBtn" type="button" title="收起/展开答题卡">⇄</button>
+        </div>
+        <div class="progress-bar" aria-hidden="true"><span id="progressFill"></span></div>
+        <div class="sheet-summary" id="sheetSummary"></div>
+        <div class="question-list" id="questionList"></div>
+      </aside>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
