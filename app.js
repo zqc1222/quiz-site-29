@@ -205,12 +205,6 @@ function visibleQuestions() {
   }
   if (view.mode === "practice") {
     list.sort((a, b) => {
-      const aw = isWrong(a.id) ? -1 : 0;
-      const bw = isWrong(b.id) ? -1 : 0;
-      if (aw !== bw) return aw - bw;
-      const ad = isDone(a.id) ? 1 : 0;
-      const bd = isDone(b.id) ? 1 : 0;
-      if (ad !== bd) return ad - bd;
       return (originalOrder.get(a.id) ?? 0) - (originalOrder.get(b.id) ?? 0);
     });
   }
